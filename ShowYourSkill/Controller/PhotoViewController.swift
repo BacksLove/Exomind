@@ -8,23 +8,73 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController {
-
+class PhotoViewController: UIViewController, PhotoManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var albumLabel: UILabel!
+    
+    var currentAlbum: AlbumData = AlbumData(userId: 0, id: 0, title: "")
+    var photoManager: PhotoManager = PhotoManager()
+    var photoList: [PhotoData] = []
+    var cellReuseIdentifier = "PhotoColItem"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        photoManager.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        photoManager.fetchPhoto(userId: currentAlbum.userId, albumId: currentAlbum.id)
+        updateUI()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photoList.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let photo: PhotoData
+        photo = photoList[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        
+        let cellImage = cell.viewWithTag(3000) as! UIImageView
+        let cellLabel = cell.viewWithTag(3001) as! UILabel
+        let imageURL = URL(string: photo.thumbnailUrl)!
+        
+        cellImage.loadImage(withUrl: imageURL)
+        cellLabel.text = photo.title
+        
+        return cell
+    }
+    
+    func updateUI() {
+        albumLabel.text = currentAlbum.title
+    }
+    
+    func didUpdatePhoto(photos: [PhotoData]) {
+        DispatchQueue.main.async {
+            self.photoList = photos
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
+}
 
+extension UIImageView {
+    func loadImage(withUrl url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let image = UIImage(data: imageData) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
