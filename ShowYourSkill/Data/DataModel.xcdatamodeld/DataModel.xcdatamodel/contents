@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlbumData" representedClassName=".AlbumData" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="userId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="PhotoData" representedClassName=".PhotoData" syncable="YES" codeGenerationType="class">
+        <attribute name="albumId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thumbnailUrl" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+    </entity>
+    <entity name="UserData" representedClassName=".UserData" syncable="YES" codeGenerationType="class">
+        <attribute name="email" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="username" attributeType="String"/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="UserData" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="AlbumData" positionX="-54" positionY="36" width="128" height="88"/>
+        <element name="PhotoData" positionX="-36" positionY="54" width="128" height="118"/>
+    </elements>
+</model>

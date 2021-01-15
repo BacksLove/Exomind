@@ -8,10 +8,24 @@
 
 import Foundation
 
-struct PhotoData: Decodable {
-    let albumId: Int
-    let id: Int
-    let title: String
-    let url: String
-    let thumbnailUrl: String
+struct PhotoData: Codable {
+    var albumId: Int
+    var id: Int
+    var title: String
+    var url: String
+    var thumbnailUrl: String
+    
+    init() {
+        albumId = 0
+        id = 0
+        title = ""
+        url = ""
+        thumbnailUrl = ""
+    }
+    
+    
+    /*init(albumId: Int, id: Int, title: String, url: String, thumbnail: String) {
+        albumId = albumId
+        
+    }*/
 }

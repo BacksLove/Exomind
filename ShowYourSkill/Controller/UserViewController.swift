@@ -14,9 +14,10 @@ class UserViewController: UIViewController, UserManagerDelegate, UITableViewDele
     @IBOutlet weak var searchBar: UISearchBar!
     
     var userManager = UserManager()
+    let defaults = UserDefaults.standard
     
-    var userList: [UserData] = []
-    var userSearchingList:[UserData] = []
+    var userList = [UserData]()
+    var userSearchingList = [UserData]()
     
     var cellReuseIdentifier = "UserlistItem"
     var searching : Bool = false
@@ -31,7 +32,6 @@ class UserViewController: UIViewController, UserManagerDelegate, UITableViewDele
         searchBar.delegate = self
         
         userManager.fetchUser()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

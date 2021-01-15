@@ -8,10 +8,16 @@
 
 import Foundation
 
-struct AlbumData: Decodable {
+struct AlbumData: Codable {
     
     let userId: Int
     let id: Int
     let title: String
+    
+    init() {
+        userId = 0
+        id = 0
+        title = ""
+    }
     
 }

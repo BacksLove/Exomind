@@ -14,10 +14,12 @@ class PhotoViewController: UIViewController, PhotoManagerDelegate, UICollectionV
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var albumLabel: UILabel!
     
-    var currentAlbum: AlbumData = AlbumData(userId: 0, id: 0, title: "")
+    var currentAlbum: AlbumData = AlbumData()
     var photoManager: PhotoManager = PhotoManager()
-    var photoList: [PhotoData] = []
+    var photoList = [PhotoData]()
     var cellReuseIdentifier = "PhotoColItem"
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +45,9 @@ class PhotoViewController: UIViewController, PhotoManagerDelegate, UICollectionV
         
         let cellImage = cell.viewWithTag(3000) as! UIImageView
         let cellLabel = cell.viewWithTag(3001) as! UILabel
-        let imageURL = URL(string: photo.thumbnailUrl)!
-        
-        cellImage.loadImage(withUrl: imageURL)
+        let imageData: Data = self.defaults.object(forKey: photo.thumbnailUrl) as! Data
+
+        cellImage.image = UIImage(data: imageData)
         cellLabel.text = photo.title
         
         return cell
@@ -78,3 +80,21 @@ extension UIImageView {
         }
     }
 }
+
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
+        return jpegData(compressionQuality: jpegQuality.rawValue)
+    }
+}
+

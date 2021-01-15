@@ -14,8 +14,8 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
     
-    var albumList: [AlbumData] = []
-    var currentUser: UserData = UserData(id: 0, name: "", username: "", email: "", phone: "", website: "")
+    var albumList = [AlbumData]()
+    var currentUser: UserData = UserData()
     
     var albumManager: AlbumManager = AlbumManager()
     var cellReuseIdentifier = "AlbumlistItem"
@@ -28,6 +28,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         albumManager.delegate = self
         
         updateUI()
+        print("id de l'user : \(currentUser.id)")
         albumManager.fetchAlbum(userId: currentUser.id)
         
         // Do any additional setup after loading the view.

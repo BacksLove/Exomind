@@ -15,6 +15,7 @@ protocol UserManagerDelegate {
 struct UserManager {
     
     let userURL = "https://jsonplaceholder.typicode.com/users"
+    let defaults = UserDefaults.standard
     
     var delegate: UserManagerDelegate?
     
@@ -24,21 +25,31 @@ struct UserManager {
     
     func performRequest(urlString: String) {
         
-        if let url = URL(string: userURL) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error ?? "")
-                    return
-                }
-                if let safeData = data {
-                    if let user: [UserData] = self.parseJSON(userData: safeData) {
-                        self.delegate?.didUpdateUser(user: user)
-                    }
-                    
+        if self.defaults.object(forKey: "Users") != nil {
+            if let safeData = self.defaults.object(forKey: "Users") as? Data {
+                if let user: [UserData] = self.parseJSON(userData: safeData) {
+                    self.delegate?.didUpdateUser(user: user)
                 }
             }
-            task.resume()
+            
+        } else {
+            if let url = URL(string: userURL) {
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) { (data, response, error) in
+                    if error != nil {
+                        print(error ?? "")
+                        return
+                    }
+                    if let safeData = data {
+                        self.defaults.set(safeData, forKey: "Users")
+                        if let user: [UserData] = self.parseJSON(userData: safeData) {
+                            self.delegate?.didUpdateUser(user: user)
+                        }
+                        
+                    }
+                }
+                task.resume()
+            }
         }
     }
     
@@ -46,20 +57,7 @@ struct UserManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([UserData].self, from: userData)
-            var users: [UserData] = []
-            
-            for index in decodedData {
-                let id = index.id
-                let name = index.name
-                let username = index.username
-                let phone = index.phone
-                let email = index.email
-                let website = index.website
-                
-                let user = UserData(id: id, name: name, username: username, email: email, phone: phone, website: website)
-                users.append(user)
-            }
-            return users
+            return decodedData
         } catch {
             print(error)
             return []

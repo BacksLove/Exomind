@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol AlbumDataDelegate {
     func didUpdateAlbum(albums: [AlbumData])
@@ -14,29 +15,39 @@ protocol AlbumDataDelegate {
 
 struct AlbumManager {
     
+    let defaults = UserDefaults.standard
     var delegate: AlbumDataDelegate?
     
     func fetchAlbum(userId: Int) {
-        performRequest(urlString: "https://jsonplaceholder.typicode.com/users/\(userId)/albums?userId=%7buserID%7d", userId: userId)
+        //let param: String = String(userId)
+        performRequest(urlString: "https://jsonplaceholder.typicode.com/users/\(userId)/albums?userId=\(userId)", userId: userId)
     }
     
     func performRequest(urlString: String, userId: Int) {
         
-        if let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)/albums?userId=%7buserID%7d") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error ?? "")
-                    return
-                }
-                if let safeData = data {
-                    if let albums: [AlbumData] = self.parseJSON(albumData: safeData) {
-                        self.delegate?.didUpdateAlbum(albums: albums)
-                    }
-                    
+        if self.defaults.object(forKey: "Albums\(userId)") != nil {
+            if let safeData = self.defaults.object(forKey: "Albums\(userId)") as? Data {
+                if let albums: [AlbumData] = self.parseJSON(albumData: safeData) {
+                    self.delegate?.didUpdateAlbum(albums: albums)
                 }
             }
-            task.resume()
+        } else {
+            if let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)/albums?userId=\(userId)") {
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) { (data, response, error) in
+                    if error != nil {
+                        print(error ?? "")
+                        return
+                    }
+                    if let safeData = data {
+                        self.defaults.set(safeData, forKey: "Albums\(userId)")
+                        if let albums: [AlbumData] = self.parseJSON(albumData: safeData) {
+                            self.delegate?.didUpdateAlbum(albums: albums)
+                        }
+                    }
+                }
+                task.resume()
+            }
         }
     }
     
@@ -44,23 +55,15 @@ struct AlbumManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([AlbumData].self, from: albumData)
-            var albums: [AlbumData] = []
             
             for index in decodedData {
-                let userId = index.userId
-                let id = index.id
-                let title = index.title
-                
-                let album = AlbumData(userId: userId, id: id, title: title)
-                
-                albums.append(album)
+                print("affichage:  \(index.title)")
             }
-            return albums
+            
+            return decodedData
         } catch {
             print(error)
             return []
         }
     }
-
-    
 }
