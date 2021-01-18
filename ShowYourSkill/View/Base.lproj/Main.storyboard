@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Wt-LK-KMX">
-                                <rect key="frame" x="0.0" y="201" width="414" height="661"/>
+                                <rect key="frame" x="0.0" y="190" width="414" height="672"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserlistItem" rowHeight="95" id="FDy-3b-h2Q">
@@ -28,14 +28,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mv4-o7-T4P">
-                                                    <rect key="frame" x="25" y="16" width="87.5" height="23"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <rect key="frame" x="25" y="16" width="93.5" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nom et Prénom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-BT-AHr">
-                                                    <rect key="frame" x="25" y="44" width="107" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="25" y="44" width="94.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -48,39 +48,40 @@
                                                 <constraint firstItem="Mv4-o7-T4P" firstAttribute="leading" secondItem="g74-G9-utw" secondAttribute="leadingMargin" constant="5" id="eJi-hV-nQV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch My Skill" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6E-GH-srf">
-                                <rect key="frame" x="20" y="94" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-E2-afp">
-                                <rect key="frame" x="0.0" y="145" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="134" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exomind" translatesAutoresizingMaskIntoConstraints="NO" id="0P2-0v-ZHQ">
+                                <rect key="frame" x="132" y="54" width="150" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="BgK-ew-6s4"/>
+                                    <constraint firstAttribute="width" constant="150" id="sAa-cj-sxD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gSS-E2-afp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Ok-38-HMa"/>
                             <constraint firstItem="8Wt-LK-KMX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IDg-a4-Q8E"/>
                             <constraint firstItem="8Wt-LK-KMX" firstAttribute="top" secondItem="gSS-E2-afp" secondAttribute="bottom" id="Kwn-GL-Kdo"/>
-                            <constraint firstItem="g6E-GH-srf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Xik-6R-aQz"/>
+                            <constraint firstItem="gSS-E2-afp" firstAttribute="top" secondItem="0P2-0v-ZHQ" secondAttribute="bottom" constant="10" id="XzY-sR-bfK"/>
                             <constraint firstItem="gSS-E2-afp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fsf-ZE-vC5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Wt-LK-KMX" secondAttribute="trailing" id="goP-Ya-7YW"/>
-                            <constraint firstItem="g6E-GH-srf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nOL-Ed-v5a"/>
+                            <constraint firstItem="0P2-0v-ZHQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="hbT-LO-kXX"/>
+                            <constraint firstItem="0P2-0v-ZHQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k7c-dd-d48"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Wt-LK-KMX" secondAttribute="bottom" id="qM6-pc-GPA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g6E-GH-srf" secondAttribute="trailing" constant="20" id="tbk-ew-Bh4"/>
-                            <constraint firstItem="gSS-E2-afp" firstAttribute="top" secondItem="g6E-GH-srf" secondAttribute="bottom" constant="30" id="ycH-np-o7d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="gSS-E2-afp" id="Ryu-pT-TbA"/>
                         <outlet property="tableView" destination="8Wt-LK-KMX" id="AFx-jP-WAr"/>
-                        <segue destination="aCK-C1-eBp" kind="show" identifier="UserAlbumSegue" id="GhH-X3-gkI"/>
+                        <segue destination="aCK-C1-eBp" kind="presentation" identifier="UserAlbumSegue" modalPresentationStyle="automatic" id="GhH-X3-gkI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,8 +114,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feL-y4-4lI">
-                                                    <rect key="frame" x="25" y="20" width="46.5" height="23"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <rect key="frame" x="25" y="20.5" width="45" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -174,14 +175,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom de l'album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-0N-sh7">
-                                <rect key="frame" x="25" y="111" width="119.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom de l'album" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-0N-sh7">
+                                <rect key="frame" x="25" y="111" width="119.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-I5-NFd">
-                                <rect key="frame" x="30" y="162" width="354" height="616"/>
+                                <rect key="frame" x="30" y="161.5" width="354" height="616.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nri-Yh-SHL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -200,9 +201,9 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnS-rb-hq7">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="100"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4H-em-G6y">
-                                                    <rect key="frame" x="43" y="105" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4H-em-G6y">
+                                                    <rect key="frame" x="2" y="105" width="42.5" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -212,7 +213,7 @@
                                                 <constraint firstItem="i4H-em-G6y" firstAttribute="top" secondItem="XnS-rb-hq7" secondAttribute="bottom" constant="5" id="B1v-bc-mCv"/>
                                                 <constraint firstItem="XnS-rb-hq7" firstAttribute="top" secondItem="3YS-6R-BeI" secondAttribute="top" id="FQQ-eu-lu2"/>
                                                 <constraint firstAttribute="trailing" secondItem="XnS-rb-hq7" secondAttribute="trailing" id="Gb8-aY-51Q"/>
-                                                <constraint firstItem="i4H-em-G6y" firstAttribute="centerX" secondItem="3YS-6R-BeI" secondAttribute="centerX" id="HQT-OJ-Pnh"/>
+                                                <constraint firstItem="i4H-em-G6y" firstAttribute="leading" secondItem="3YS-6R-BeI" secondAttribute="leading" constant="2" id="LdJ-A2-aPJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="i4H-em-G6y" secondAttribute="bottom" constant="2" id="eYR-yg-0Cw"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -237,12 +238,16 @@
                     <navigationItem key="navigationItem" id="19x-tI-YhL"/>
                     <connections>
                         <outlet property="albumLabel" destination="CW6-ep-58e" id="lIh-r4-EvT"/>
+                        <outlet property="albumTitleLabel" destination="k1f-0N-sh7" id="gog-Fn-OwV"/>
                         <outlet property="collectionView" destination="1OR-I5-NFd" id="fGS-AC-B5X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Dr-fd-0ZQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853.6231884057972" y="128.57142857142856"/>
+            <point key="canvasLocation" x="1746" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exomind" width="1184" height="513"/>
+    </resources>
 </document>

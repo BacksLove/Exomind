@@ -19,12 +19,10 @@ struct AlbumManager {
     var delegate: AlbumDataDelegate?
     
     func fetchAlbum(userId: Int) {
-        //let param: String = String(userId)
         performRequest(urlString: "https://jsonplaceholder.typicode.com/users/\(userId)/albums?userId=\(userId)", userId: userId)
     }
     
     func performRequest(urlString: String, userId: Int) {
-        
         if self.defaults.object(forKey: "Albums\(userId)") != nil {
             if let safeData = self.defaults.object(forKey: "Albums\(userId)") as? Data {
                 if let albums: [AlbumData] = self.parseJSON(albumData: safeData) {
@@ -55,11 +53,6 @@ struct AlbumManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([AlbumData].self, from: albumData)
-            
-            for index in decodedData {
-                print("affichage:  \(index.title)")
-            }
-            
             return decodedData
         } catch {
             print(error)

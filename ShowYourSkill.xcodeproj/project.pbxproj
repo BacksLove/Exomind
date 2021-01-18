@@ -23,6 +23,7 @@
 		18BE664425B1CC2800EE998A /* AlbumData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE664325B1CC2800EE998A /* AlbumData.swift */; };
 		18BE665125B2343B00EE998A /* ShowYourSkillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE665025B2343B00EE998A /* ShowYourSkillTests.swift */; };
 		18BE665F25B2344800EE998A /* ShowYourSkillUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE665E25B2344800EE998A /* ShowYourSkillUITests.swift */; };
+		18BE666B25B237C600EE998A /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE666A25B237C600EE998A /* Spinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		18BE665C25B2344800EE998A /* ShowYourSkillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowYourSkillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BE665E25B2344800EE998A /* ShowYourSkillUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowYourSkillUITests.swift; sourceTree = "<group>"; };
 		18BE666025B2344800EE998A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18BE666A25B237C600EE998A /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		18BE65CB25B0701B00EE998A /* ShowYourSkill */ = {
 			isa = PBXGroup;
 			children = (
+				18BE666925B2379F00EE998A /* Utilities */,
 				18BE65CC25B0701B00EE998A /* AppDelegate.swift */,
 				18BE65CE25B0701B00EE998A /* SceneDelegate.swift */,
 				18BE65E025B071C100EE998A /* Model */,
@@ -198,6 +201,14 @@
 				18BE666025B2344800EE998A /* Info.plist */,
 			);
 			path = ShowYourSkillUITests;
+			sourceTree = "<group>";
+		};
+		18BE666925B2379F00EE998A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				18BE666A25B237C600EE998A /* Spinner.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +349,7 @@
 				18BE65D125B0701B00EE998A /* UserViewController.swift in Sources */,
 				18BE65EB25B081A100EE998A /* UserManager.swift in Sources */,
 				18BE65CD25B0701B00EE998A /* AppDelegate.swift in Sources */,
+				18BE666B25B237C600EE998A /* Spinner.swift in Sources */,
 				18BE65CF25B0701B00EE998A /* SceneDelegate.swift in Sources */,
 				18BE65F925B116BB00EE998A /* PhotoManager.swift in Sources */,
 				18BE664225B1CC1E00EE998A /* UserData.swift in Sources */,

@@ -22,10 +22,4 @@ struct PhotoData: Codable {
         url = ""
         thumbnailUrl = ""
     }
-    
-    
-    /*init(albumId: Int, id: Int, title: String, url: String, thumbnail: String) {
-        albumId = albumId
-        
-    }*/
 }

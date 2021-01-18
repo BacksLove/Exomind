@@ -10,9 +10,9 @@ import Foundation
 
 struct AlbumData: Codable {
     
-    let userId: Int
-    let id: Int
-    let title: String
+    var userId: Int
+    var id: Int
+    var title: String
     
     init() {
         userId = 0

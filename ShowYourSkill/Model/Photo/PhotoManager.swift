@@ -23,17 +23,13 @@ struct PhotoManager {
     }
     
     func performRequest(urlString: String, userId: Int, albumId: Int) {
-        
         if self.defaults.object(forKey: "\(userId)Photos\(albumId)") != nil {
-            
             if let safeData = self.defaults.object(forKey: "\(userId)Photos\(albumId)") as? Data {
                 if let photos: [PhotoData] = self.parseJSON(photoData: safeData) {
                     self.delegate?.didUpdatePhoto(photos: photos)
                 }
             }
-            
         } else {
-            
             if let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)/photos?albumId=\(albumId)") {
                 let session = URLSession(configuration: .default)
                 let task = session.dataTask(with: url) { (data, response, error) in
@@ -51,7 +47,7 @@ struct PhotoManager {
                 task.resume()
             }
         }
-   }
+    }
     
     func parseJSON(photoData: Data) -> [PhotoData] {
         let decoder = JSONDecoder()
@@ -60,15 +56,8 @@ struct PhotoManager {
             if self.defaults.object(forKey: decodedData[0].thumbnailUrl) == nil {
                 for index in decodedData {
                     let imageThumbnailURL = URL(string: index.thumbnailUrl)!
-                    var imageThumbnailData = try Data(contentsOf: imageThumbnailURL)
-                    
-                    //let imageURL = URL(string: index.url)!
-                    //let imageData = try Data(contentsOf: imageURL)
-                    
-                    //print(imageThumbnailData)
-                    
+                    let imageThumbnailData = try Data(contentsOf: imageThumbnailURL)
                     self.defaults.set(imageThumbnailData, forKey: index.thumbnailUrl)
-                    //self.defaults.set(imageData, forKey: index.url)
                 }
             }
             return decodedData
@@ -77,6 +66,6 @@ struct PhotoManager {
             return []
         }
     }
-
+    
     
 }

@@ -8,23 +8,22 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UserManagerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+// MARK - UIViewController
+
+class UserViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var userManager = UserManager()
     let defaults = UserDefaults.standard
-    
+    var userManager = UserManager()
     var userList = [UserData]()
     var userSearchingList = [UserData]()
-    
     var cellReuseIdentifier = "UserlistItem"
     var searching : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,18 +37,31 @@ class UserViewController: UIViewController, UserManagerDelegate, UITableViewDele
         self.view.endEditing(true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        userSearchingList = userList.filter({$0.username.lowercased().prefix(searchText.count) == searchText.lowercased()})
-        searching = true
-        tableView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserAlbumSegue" {
+            let newUser: UserData
+            newUser = sender as! UserData
+            var destination: AlbumViewController
+            destination = segue.destination as! AlbumViewController
+            destination.currentUser = newUser
+        }
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchBar.text = ""
-        tableView.reloadData()
+}
+
+// MARK - UserManager
+
+extension UserViewController: UserManagerDelegate {
+    func didUpdateUser(user: [UserData]) {
+        DispatchQueue.main.async {
+            self.userList = user
+            self.tableView.reloadData()
+        }
     }
-    
+}
+
+// MARK - TableView
+
+extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
             return userSearchingList.count
@@ -65,12 +77,9 @@ class UserViewController: UIViewController, UserManagerDelegate, UITableViewDele
         } else {
             user = userList[indexPath.row]
         }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        
         let usernameLabel = cell.viewWithTag(1000) as! UILabel
         let nameLabel = cell.viewWithTag(1001) as! UILabel
-        
         usernameLabel.text = user.username
         nameLabel.text = user.name
         
@@ -84,29 +93,45 @@ class UserViewController: UIViewController, UserManagerDelegate, UITableViewDele
         } else {
             user = userList[indexPath.row]
         }
-        
-        print(user.name)
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "UserAlbumSegue", sender: user)
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let user = userList[indexPath.row]
+        let messageCustom = "Nom et prénom: \(user.name)\ntel: \(user.phone)\nEmail: \(user.email)\nSite: \(user.website)"
         
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        let attributedMessageText = NSMutableAttributedString(
+            string: messageCustom,
+            attributes: [
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)
+            ]
+        )
+        let alert = UIAlertController(title: user.username, message: nil, preferredStyle: .alert)
+        let actionCancel = UIAlertAction.init(title: "Retour", style: UIAlertAction.Style.cancel)
+        
+        alert.setValue(attributedMessageText, forKey: "attributedMessage")
+        alert.addAction(actionCancel)
+        self.present(alert, animated: true)
+    }
+}
+
+// MARK - SearchBar
+
+extension UserViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        userSearchingList = userList.filter({$0.username.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searching = true
+        tableView.reloadData()
     }
     
-    func didUpdateUser(user: [UserData]) {
-        DispatchQueue.main.async {
-            self.userList = user
-            self.tableView.reloadData()
-        }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        tableView.reloadData()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UserAlbumSegue" {
-            let newUser: UserData
-            newUser = sender as! UserData
-            var destination: AlbumViewController
-            destination = segue.destination as! AlbumViewController
-            destination.currentUser = newUser
-        }
-    }
-    
 }
 

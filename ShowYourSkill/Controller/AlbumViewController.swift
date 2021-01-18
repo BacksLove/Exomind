@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AlbumDataDelegate {
+class AlbumViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -16,7 +16,6 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var albumList = [AlbumData]()
     var currentUser: UserData = UserData()
-    
     var albumManager: AlbumManager = AlbumManager()
     var cellReuseIdentifier = "AlbumlistItem"
     
@@ -27,48 +26,12 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         albumManager.delegate = self
         
-        updateUI()
-        print("id de l'user : \(currentUser.id)")
         albumManager.fetchAlbum(userId: currentUser.id)
-        
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
     func updateUI() {
         titleLabel.text = "Albums photos de \(currentUser.username)"
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albumList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let album: AlbumData
-        album = albumList[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        
-        let titleLabel = cell.viewWithTag(2000) as! UILabel
-        titleLabel.text = album.title
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let album: AlbumData
-        album = albumList[indexPath.row]
-        
-        print(album.title)
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "PhotoSegue", sender: album)
-        
-    }
-    
-    func didUpdateAlbum(albums: [AlbumData]) {
-        DispatchQueue.main.async {
-            self.albumList = albums
-            self.tableView.reloadData()
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +43,40 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
             destination.currentAlbum = newAlbum
         }
     }
+}
+
+// MARK - AlbumData
+
+extension AlbumViewController: AlbumDataDelegate {
+    func didUpdateAlbum(albums: [AlbumData]) {
+        DispatchQueue.main.async {
+            self.albumList = albums
+            self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK - TableView
+
+extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        albumList.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let album: AlbumData
+        album = albumList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let titleLabel = cell.viewWithTag(2000) as! UILabel
+        titleLabel.text = album.title
+        
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let album: AlbumData
+        album = albumList[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "PhotoSegue", sender: album)
+    }
 }

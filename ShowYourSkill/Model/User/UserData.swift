@@ -10,12 +10,12 @@ import Foundation
 
 struct UserData: Codable {
     
-    let id: Int
-    let name: String
-    let username: String
-    let email: String
-    let phone: String
-    let website: String
+    var id: Int
+    var name: String
+    var username: String
+    var email: String
+    var phone: String
+    var website: String
     
     init() {
         id = 0

@@ -24,14 +24,12 @@ struct UserManager {
     }
     
     func performRequest(urlString: String) {
-        
         if self.defaults.object(forKey: "Users") != nil {
             if let safeData = self.defaults.object(forKey: "Users") as? Data {
                 if let user: [UserData] = self.parseJSON(userData: safeData) {
                     self.delegate?.didUpdateUser(user: user)
                 }
             }
-            
         } else {
             if let url = URL(string: userURL) {
                 let session = URLSession(configuration: .default)
@@ -45,7 +43,6 @@ struct UserManager {
                         if let user: [UserData] = self.parseJSON(userData: safeData) {
                             self.delegate?.didUpdateUser(user: user)
                         }
-                        
                     }
                 }
                 task.resume()
