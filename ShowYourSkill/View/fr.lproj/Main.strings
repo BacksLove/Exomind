@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Nom et Prénom"; ObjectID = "1WA-BT-AHr"; */
+"1WA-BT-AHr.text" = "Nom et Prénom";
+
+/* Class = "UILabel"; text = "Utilisateur"; ObjectID = "3Nc-UR-fA2"; */
+"3Nc-UR-fA2.text" = "Utilisateur";
+
+/* Class = "UILabel"; text = "Album"; ObjectID = "CW6-ep-58e"; */
+"CW6-ep-58e.text" = "Album";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Mv4-o7-T4P"; */
+"Mv4-o7-T4P.text" = "Username";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "feL-y4-4lI"; */
+"feL-y4-4lI.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "i4H-em-G6y"; */
+"i4H-em-G6y.text" = "Label";
+
+/* Class = "UILabel"; text = "Nom de l'album"; ObjectID = "k1f-0N-sh7"; */
+"k1f-0N-sh7.text" = "Nom de l'album";
+
+/* Class = "UILabel"; text = "Liste des albums"; ObjectID = "tzX-4A-UgV"; */
+"tzX-4A-UgV.text" = "Liste des albums";

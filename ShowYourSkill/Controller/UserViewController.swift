@@ -99,7 +99,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let user = userList[indexPath.row]
-        let messageCustom = "Nom et prénom: \(user.name)\ntel: \(user.phone)\nEmail: \(user.email)\nSite: \(user.website)"
+        let messageCustom = "\("NAME".localized()): \(user.name)\n\("PHONE".localized()): \(user.phone)\n\("EMAIL".localized()): \(user.email)\n\("WEBSITE".localized()): \(user.website)"
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
@@ -111,7 +111,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
             ]
         )
         let alert = UIAlertController(title: user.username, message: nil, preferredStyle: .alert)
-        let actionCancel = UIAlertAction.init(title: "Retour", style: UIAlertAction.Style.cancel)
+        let actionCancel = UIAlertAction.init(title: "BACK".localized(), style: UIAlertAction.Style.cancel)
         
         alert.setValue(attributedMessageText, forKey: "attributedMessage")
         alert.addAction(actionCancel)

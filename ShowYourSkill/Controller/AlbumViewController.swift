@@ -31,7 +31,8 @@ class AlbumViewController: UIViewController {
     }
     
     func updateUI() {
-        titleLabel.text = "Albums photos de \(currentUser.username)"
+        titleLabel.text = "\("ALBUM_OF".localized()) \(currentUser.username)"
+        albumLabel.text = "ALBUM_LIST".localized()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

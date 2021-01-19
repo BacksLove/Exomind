@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ShowYourSkill
+
+  Created by Boubakar Traore on 19/01/2021.
+  Copyright © 2021 Boubakar Traore. All rights reserved.
+*/
+
+"BACK" = "Retour";
+"NAME" = "Nom et prénom";
+"PHONE" = "Tel";
+"WEBSITE" = "Site";
+"USERNAME" = "Pseudo";
+"EMAIL" = "Email";
+"ALBUM_OF" = "Albums photos de";
+"ALBUM_LIST" = "Liste des albums";
+"DOWNLOADING" = "Télécharment...";

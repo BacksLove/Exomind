@@ -24,6 +24,8 @@
 		18BE665125B2343B00EE998A /* ShowYourSkillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE665025B2343B00EE998A /* ShowYourSkillTests.swift */; };
 		18BE665F25B2344800EE998A /* ShowYourSkillUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE665E25B2344800EE998A /* ShowYourSkillUITests.swift */; };
 		18BE666B25B237C600EE998A /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE666A25B237C600EE998A /* Spinner.swift */; };
+		18BE668525B6762700EE998A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18BE668725B6762700EE998A /* Localizable.strings */; };
+		18BE668A25B6790500EE998A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE668925B6790500EE998A /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,9 @@
 		18BE665E25B2344800EE998A /* ShowYourSkillUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowYourSkillUITests.swift; sourceTree = "<group>"; };
 		18BE666025B2344800EE998A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BE666A25B237C600EE998A /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		18BE668625B6762700EE998A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18BE668825B6762800EE998A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18BE668925B6790500EE998A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,7 @@
 		18BE65CB25B0701B00EE998A /* ShowYourSkill */ = {
 			isa = PBXGroup;
 			children = (
+				18BE666C25B672E700EE998A /* Strings */,
 				18BE666925B2379F00EE998A /* Utilities */,
 				18BE65CC25B0701B00EE998A /* AppDelegate.swift */,
 				18BE65CE25B0701B00EE998A /* SceneDelegate.swift */,
@@ -207,8 +213,17 @@
 			isa = PBXGroup;
 			children = (
 				18BE666A25B237C600EE998A /* Spinner.swift */,
+				18BE668925B6790500EE998A /* StringExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		18BE666C25B672E700EE998A /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				18BE668725B6762700EE998A /* Localizable.strings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +312,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 18BE65C025B0701B00EE998A;
 			productRefGroup = 18BE65CA25B0701B00EE998A /* Products */;
@@ -316,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BE65D925B0701C00EE998A /* LaunchScreen.storyboard in Resources */,
+				18BE668525B6762700EE998A /* Localizable.strings in Resources */,
 				18BE65D625B0701C00EE998A /* Assets.xcassets in Resources */,
 				18BE65D425B0701B00EE998A /* Main.storyboard in Resources */,
 			);
@@ -353,6 +370,7 @@
 				18BE65CF25B0701B00EE998A /* SceneDelegate.swift in Sources */,
 				18BE65F925B116BB00EE998A /* PhotoManager.swift in Sources */,
 				18BE664225B1CC1E00EE998A /* UserData.swift in Sources */,
+				18BE668A25B6790500EE998A /* StringExtension.swift in Sources */,
 				18BE65E625B07D7D00EE998A /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +423,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		18BE668725B6762700EE998A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18BE668625B6762700EE998A /* fr */,
+				18BE668825B6762800EE998A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -412,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -472,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

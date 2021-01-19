@@ -154,35 +154,35 @@
                         <outlet property="albumLabel" destination="tzX-4A-UgV" id="DXl-cJ-uCQ"/>
                         <outlet property="tableView" destination="nJd-LX-973" id="A9y-if-rLI"/>
                         <outlet property="titleLabel" destination="3Nc-UR-fA2" id="vA4-tN-oZo"/>
-                        <segue destination="DPy-V8-cGB" kind="show" identifier="PhotoSegue" id="ve1-bl-AOI"/>
+                        <segue destination="DPy-V8-cGB" kind="presentation" identifier="PhotoSegue" modalPresentationStyle="fullScreen" id="ve1-bl-AOI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B73-gM-bL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924.63768115942037" y="128.57142857142856"/>
+            <point key="canvasLocation" x="932" y="129"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="miE-4t-BIc">
             <objects>
                 <viewController id="DPy-V8-cGB" customClass="PhotoViewController" customModule="ShowYourSkill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x2h-qH-pAZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CW6-ep-58e">
-                                <rect key="frame" x="20" y="50" width="374" height="21"/>
+                                <rect key="frame" x="20" y="94" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom de l'album" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-0N-sh7">
-                                <rect key="frame" x="25" y="111" width="119.5" height="20.5"/>
+                                <rect key="frame" x="25" y="155" width="119.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-I5-NFd">
-                                <rect key="frame" x="30" y="161.5" width="354" height="616.5"/>
+                                <rect key="frame" x="30" y="205.5" width="354" height="626.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nri-Yh-SHL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -220,6 +220,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqp-vS-4Tv">
+                                <rect key="frame" x="25" y="69" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Mh1-bS-uHf"/>
+                                    <constraint firstAttribute="height" constant="50" id="sGA-03-aXx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="arrowtriangle.left.fill" catalog="system">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="DPy-V8-cGB" eventType="touchUpInside" id="onK-qi-8Fh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -229,8 +243,10 @@
                             <constraint firstItem="k1f-0N-sh7" firstAttribute="leading" secondItem="FBq-5i-c1y" secondAttribute="leading" constant="25" id="STG-Aq-wpW"/>
                             <constraint firstItem="FBq-5i-c1y" firstAttribute="bottom" secondItem="1OR-I5-NFd" secondAttribute="bottom" constant="30" id="ZgO-8x-nr0"/>
                             <constraint firstItem="FBq-5i-c1y" firstAttribute="trailing" secondItem="1OR-I5-NFd" secondAttribute="trailing" constant="30" id="d3E-gh-vCC"/>
+                            <constraint firstItem="Nqp-vS-4Tv" firstAttribute="leading" secondItem="FBq-5i-c1y" secondAttribute="leading" constant="25" id="eHM-4j-2gd"/>
                             <constraint firstItem="CW6-ep-58e" firstAttribute="leading" secondItem="FBq-5i-c1y" secondAttribute="leading" constant="20" id="fXr-IL-3LB"/>
                             <constraint firstItem="1OR-I5-NFd" firstAttribute="leading" secondItem="FBq-5i-c1y" secondAttribute="leading" constant="30" id="fo4-lA-OyD"/>
+                            <constraint firstItem="Nqp-vS-4Tv" firstAttribute="top" secondItem="FBq-5i-c1y" secondAttribute="top" constant="25" id="imx-uE-X9y"/>
                             <constraint firstItem="CW6-ep-58e" firstAttribute="top" secondItem="FBq-5i-c1y" secondAttribute="top" constant="50" id="o0A-lf-T5w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FBq-5i-c1y"/>
@@ -244,10 +260,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Dr-fd-0ZQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="129"/>
+            <point key="canvasLocation" x="1744.9275362318842" y="128.57142857142856"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
         <image name="exomind" width="1184" height="513"/>
     </resources>
 </document>
